@@ -1,14 +1,22 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
-import { Login } from './components/containers';
+import { useSelector } from 'react-redux';
+import { Login, Home } from './components/containers';
+import { Navbar } from './components/ui';
 
 import './App.scss';
 
 function App() {
+  const { showNavbar } = useSelector(state => state);
+
   return (
-    <Switch>
-      <Route exact path="/" component={Login} />
-    </Switch>
+    <div>
+      {showNavbar && <Navbar />}
+      <Switch>
+        <Route exact path="/" component={Login} />
+        <Route exact path="/home" component={Home} />
+      </Switch>
+    </div>
   );
 }
 
