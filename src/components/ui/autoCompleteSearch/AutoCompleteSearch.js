@@ -53,6 +53,7 @@ const AutoCompleteSearch = ({ students }) => {
       s => s.toLowerCase().trim() === text.toLowerCase().trim()
     );
     if (searchSuggestion && searchResult.length === 1) {
+      console.log('EAE');
       dispatch(selectStudent(text));
       setError(false);
     } else if (searchSuggestion && searchResult.length === 0) {

@@ -5,12 +5,19 @@ import {
   ADD_STUDENT_SUCESS,
   LIST_STUDENTS_REQUEST,
   LIST_STUDENTS_SUCESS,
+  CLEAR_SELECTED_STUDENT,
 } from './constants';
 
 export const selectStudent = studentName => {
   return {
     type: SELECT_STUDENT,
     payload: { studentName },
+  };
+};
+
+export const clearSelectedStudent = () => {
+  return {
+    type: CLEAR_SELECTED_STUDENT,
   };
 };
 

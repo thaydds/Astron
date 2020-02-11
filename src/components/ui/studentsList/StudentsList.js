@@ -1,8 +1,11 @@
 import React from 'react';
 import './StudentsList.scss';
 import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
+import { clearSelectedStudent } from '../../../actions';
 
 const StudentsList = ({ students }) => {
+  const dispatch = useDispatch();
   return (
     <div className="students_list_container">
       <table>
@@ -27,6 +30,11 @@ const StudentsList = ({ students }) => {
           })}
         </tbody>
       </table>
+      {students.length === 1 && (
+        <button onClick={() => dispatch(clearSelectedStudent())} type="submit">
+          Limpar Filtro
+        </button>
+      )}
     </div>
   );
 };
