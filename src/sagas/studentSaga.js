@@ -6,9 +6,10 @@ import {
   LIST_STUDENTS_REQUEST,
 } from '../actions/constants';
 
-function* addStudent(student) {
+function* addStudent({ payload }) {
   try {
-    const response = yield call(API.post, '/students', student);
+    console.log('STUNDET', payload.student);
+    const response = yield call(API.post, '/students', payload.student);
     yield put(addStudentSucess(response.data));
   } catch (e) {
     console.log(e);
