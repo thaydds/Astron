@@ -22,7 +22,7 @@ const Home = () => {
     <div className="home_container">
       <Title title="Bem vindo(a) ao Astron - Edu" />
       <AutoCompleteSearch students={studentsName} />
-      <StudentsList />
+      <StudentsList students={students} />
     </div>
   );
 };

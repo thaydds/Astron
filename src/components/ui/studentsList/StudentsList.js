@@ -1,7 +1,8 @@
 import React from 'react';
 import './StudentsList.scss';
+import PropTypes from 'prop-types';
 
-const StudentsList = () => {
+const StudentsList = ({ students }) => {
   return (
     <div className="students_list_container">
       <table>
@@ -14,18 +15,16 @@ const StudentsList = () => {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td data-column="First Name">Thay</td>
-            <td data-column="Last Name">thay@gmai.com</td>
-            <td data-column="Job Title">MESTRANDO</td>
-            <td data-column="Twitter">Ativo</td>
-          </tr>
-          <tr>
-            <td data-column="First Name">Jonas</td>
-            <td data-column="Last Name">gayzinho@gmai.com</td>
-            <td data-column="Job Title">Creche</td>
-            <td data-column="Twitter">Inativo</td>
-          </tr>
+          {students.map(s => {
+            return (
+              <tr key={s.id}>
+                <td data-column="First Name">{s.name}</td>
+                <td data-column="Last Name">{s.email}</td>
+                <td data-column="Job Title">{s.grade}</td>
+                <td data-column="Twitter">{s.status ? 'Ativo' : 'Inativo'}</td>
+              </tr>
+            );
+          })}
         </tbody>
       </table>
     </div>
@@ -33,3 +32,7 @@ const StudentsList = () => {
 };
 
 export default StudentsList;
+
+StudentsList.propTypes = {
+  students: PropTypes.arrayOf(PropTypes.object).isRequired,
+};
