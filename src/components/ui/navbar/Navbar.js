@@ -12,7 +12,7 @@ const NavBar = () => {
           <a href="/home">Home</a>
         </li>
         <li>
-          <a href="adicionar">Adicionar Aluno</a>
+          <a href="/alunos/adicionar">Adicionar Aluno</a>
         </li>
         <li>
           <a href="sobre">Sobre</a>

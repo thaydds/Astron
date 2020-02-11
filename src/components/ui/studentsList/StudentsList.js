@@ -4,41 +4,29 @@ import './StudentsList.scss';
 const StudentsList = () => {
   return (
     <div className="students_list_container">
-      <h2>Alunos Cadastrados</h2>
-      <table className="students_list_container__table">
-        <tr>
-          <th>#</th>
-          <th>Nome</th>
-          <th>Sexo</th>
-          <th>Ensino</th>
-          <th>Registro</th>
-          <th>Status</th>
-          <th>Acoes</th>
-        </tr>
-        <tr className="border_bottom">
-          <td>1</td>
-          <td>Jonas</td>
-          <td>Comia fodase</td>
-          <td>Sexual</td>
-          <td>??/??/????</td>
-          <td>Passiva</td>
-          <td>
-            <button>Edit</button>
-            <button>Delete</button>
-          </td>
-        </tr>
-        <tr>
-          <td>1</td>
-          <td>Jonas</td>
-          <td>Comia fodase</td>
-          <td>Sexual</td>
-          <td>??/??/????</td>
-          <td>Passiva</td>
-          <td>
-            <button>Edit</button>
-            <button>Delete</button>
-          </td>
-        </tr>
+      <table>
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Email</th>
+            <th>Ensino</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td data-column="First Name">Thay</td>
+            <td data-column="Last Name">thay@gmai.com</td>
+            <td data-column="Job Title">MESTRANDO</td>
+            <td data-column="Twitter">Ativo</td>
+          </tr>
+          <tr>
+            <td data-column="First Name">Jonas</td>
+            <td data-column="Last Name">gayzinho@gmai.com</td>
+            <td data-column="Job Title">Creche</td>
+            <td data-column="Twitter">Inativo</td>
+          </tr>
+        </tbody>
       </table>
     </div>
   );

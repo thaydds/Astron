@@ -9,7 +9,7 @@ const Login = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(handleNavbar(false));
-  }, []);
+  }, [dispatch]);
   return (
     <div className="login_container">
       <img

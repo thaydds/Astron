@@ -1,7 +1,7 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { Login, Home } from './components/containers';
+import { Login, Home, AddStudent } from './components/containers';
 import { Navbar } from './components/ui';
 
 import './App.scss';
@@ -15,6 +15,7 @@ function App() {
       <Switch>
         <Route exact path="/" component={Login} />
         <Route exact path="/home" component={Home} />
+        <Route exact path="/alunos/adicionar" component={AddStudent} />
       </Switch>
     </div>
   );

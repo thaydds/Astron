@@ -1,11 +1,12 @@
 import {
-  ADD_STUDENT_REQUEST,
+  ADD_STUDENT_SUCESS,
+  LIST_STUDENTS_SUCESS,
   SELECT_STUDENT,
   SHOW_NAVBAR,
 } from '../actions/constants';
 
 const initialState = {
-  students: ['Jonas', 'Thayrone', 'Elma', 'Erildo', 'Joicy', 'Larissa'],
+  students: [],
   selectedtudent: [],
   showNavbar: false,
 };
@@ -15,12 +16,14 @@ function students(state = initialState, { type, payload }) {
     case SELECT_STUDENT:
       return {
         ...state,
-        selectedtudent: state.survivors.filter(
-          s => s.name.toLowerCase() === payload.survivorName.toLowerCase()
+        selectedtudent: state.students.filter(
+          s => s.name.toLowerCase() === payload.studentName.toLowerCase()
         ),
       };
-    case ADD_STUDENT_REQUEST:
-      return { ...state, students: [...this.state.students, payload.student] };
+    case ADD_STUDENT_SUCESS:
+      return { ...state, students: [...state.students, payload.student] };
+    case LIST_STUDENTS_SUCESS:
+      return { ...state, students: payload.students };
     case SHOW_NAVBAR:
       return { ...state, showNavbar: payload.flag };
     default:
