@@ -54,9 +54,8 @@ const AutoCompleteSearch = ({ students }) => {
     );
     if (searchSuggestion && searchResult.length === 1) {
       dispatch(selectStudent(text));
-      setText('');
       setError(false);
-    } else {
+    } else if (searchSuggestion && searchResult.length === 0) {
       setError(true);
     }
   };
@@ -82,6 +81,7 @@ const AutoCompleteSearch = ({ students }) => {
     if (searchResult.length === 1) {
       dispatch(selectStudent(text));
     } else {
+      console.log('2');
       setError(true);
     }
   };
