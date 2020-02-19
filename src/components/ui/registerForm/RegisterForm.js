@@ -1,16 +1,17 @@
 import React from 'react';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import { useDispatch } from 'react-redux';
+import PropTypes from 'prop-types';
 import * as yup from 'yup';
-import { addStudentRequest } from '../../../actions';
-import './StudentForm.scss';
+import { withRouter } from 'react-router-dom';
+import { addTeacherRequest } from '../../../actions';
+import '../studentForm/StudentForm.scss';
 
 const initialValues = {
   name: '',
   email: '',
   gender: '',
   birthday: '',
-  grade: '',
   password: '',
 };
 
@@ -23,10 +24,9 @@ const validation = yup.object().shape({
   gender: yup.string().required('Genero e um campo obrigatorio'),
   name: yup.string().required('Nome e um campo obrigatorio'),
   birthday: yup.string().required('Data de nascimento e um campo obrigatorio'),
-  grade: yup.string().required('Ensino e um campo obrigatorio'),
 });
 
-const StudentForm = () => {
+const RegisterForm = props => {
   const dispatch = useDispatch();
   return (
     <Formik
@@ -37,8 +37,7 @@ const StudentForm = () => {
           status: true,
           birthday: new Date(values.birthday),
         };
-        console.log('student', student);
-        return dispatch(addStudentRequest(student));
+        return dispatch(addTeacherRequest(student));
       }}
       validationSchema={validation}
     >
@@ -83,13 +82,6 @@ const StudentForm = () => {
           </div>
         </div>
         <div className="student_form_container__form_group">
-          <label htmlFor="grade">Ensino</label>
-          <div>
-            <Field name="grade" placeholder="Ensino" type="text" />
-            <ErrorMessage component="span" name="grade" />
-          </div>
-        </div>
-        <div className="student_form_container__form_group">
           <label htmlFor="password">Senha</label>
           <div>
             <Field name="password" placeholder="Senha" type="text" />
@@ -98,11 +90,18 @@ const StudentForm = () => {
         </div>
         <div className="student_form_container__button_group">
           <button type="submit">Adicionar</button>
-          <button type="submit">Cancelar</button>
+          <button type="submit" onClick={() => props.history.push('/')} to="/">
+            Voltar
+          </button>
         </div>
       </Form>
     </Formik>
   );
 };
 
-export default StudentForm;
+export default withRouter(RegisterForm);
+
+RegisterForm.propTypes = {
+  // eslint-disable-next-line react/forbid-prop-types
+  history: PropTypes.object.isRequired,
+};

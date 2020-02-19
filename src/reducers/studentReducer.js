@@ -4,12 +4,16 @@ import {
   SELECT_STUDENT,
   SHOW_NAVBAR,
   CLEAR_SELECTED_STUDENT,
+  ADD_TEACHER_SUCESS,
+  SIGN_IN_SUCCESS,
 } from '../actions/constants';
 
 const initialState = {
   students: [],
   selectedtudent: [],
   showNavbar: false,
+  isLogged: false,
+  token: null,
 };
 
 function students(state = initialState, { type, payload }) {
@@ -29,6 +33,10 @@ function students(state = initialState, { type, payload }) {
       return { ...state, students: payload.students };
     case SHOW_NAVBAR:
       return { ...state, showNavbar: payload.flag };
+    case ADD_TEACHER_SUCESS:
+      return { ...state };
+    case SIGN_IN_SUCCESS:
+      return { ...state, token: payload.token, isLogged: true };
     default:
       return state;
   }

@@ -2,6 +2,8 @@ import React from 'react';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as yup from 'yup';
 import './LoginForm.scss';
+import { useDispatch } from 'react-redux';
+import { signInRequest } from '../../../actions';
 
 const initialValues = {
   email: '',
@@ -17,10 +19,13 @@ const validation = yup.object().shape({
 });
 
 const LoginForm = () => {
+  const dispatch = useDispatch();
   return (
     <Formik
       initialValues={initialValues}
-      onSubmit={props => console.log(props)}
+      onSubmit={({ email, password }) =>
+        dispatch(signInRequest(email, password))
+      }
       validationSchema={validation}
     >
       <Form className="login_form_container">

@@ -4,6 +4,7 @@ import AutoCompleteSearch from './autoCompleteSearch/AutoCompleteSearch';
 import Title from './title/Title';
 import StudentsList from './studentsList/StudentsList';
 import StudentForm from './studentForm/StudentForm';
+import RegisterForm from './registerForm/RegisterForm';
 
 export {
   LoginForm,
@@ -12,4 +13,5 @@ export {
   Title,
   StudentsList,
   StudentForm,
+  RegisterForm,
 };
