@@ -3,7 +3,9 @@ import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as yup from 'yup';
 import './LoginForm.scss';
 import { useDispatch } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import { signInRequest } from '../../../actions';
+import history from '../../../histoty';
 
 const initialValues = {
   email: '',
@@ -18,14 +20,12 @@ const validation = yup.object().shape({
   password: yup.string().required('Senha e um campo obrigatorio'),
 });
 
-const LoginForm = () => {
+const LoginForm = props => {
   const dispatch = useDispatch();
   return (
     <Formik
       initialValues={initialValues}
-      onSubmit={({ email, password }) =>
-        dispatch(signInRequest(email, password))
-      }
+      onSubmit={({ email, password }) => props.history.push('/home')}
       validationSchema={validation}
     >
       <Form className="login_form_container">
@@ -52,4 +52,4 @@ const LoginForm = () => {
   );
 };
 
-export default LoginForm;
+export default withRouter(LoginForm);

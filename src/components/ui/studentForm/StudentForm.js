@@ -2,6 +2,7 @@ import React from 'react';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import { useDispatch } from 'react-redux';
 import * as yup from 'yup';
+import { withRouter } from 'react-router-dom';
 import { addStudentRequest } from '../../../actions';
 import './StudentForm.scss';
 
@@ -26,7 +27,7 @@ const validation = yup.object().shape({
   grade: yup.string().required('Ensino e um campo obrigatorio'),
 });
 
-const StudentForm = () => {
+const StudentForm = props => {
   const dispatch = useDispatch();
   return (
     <Formik
@@ -37,8 +38,8 @@ const StudentForm = () => {
           status: true,
           birthday: new Date(values.birthday),
         };
-        console.log('student', student);
-        return dispatch(addStudentRequest(student));
+        dispatch(addStudentRequest(student));
+        props.history.push('/home');
       }}
       validationSchema={validation}
     >
@@ -98,11 +99,13 @@ const StudentForm = () => {
         </div>
         <div className="student_form_container__button_group">
           <button type="submit">Adicionar</button>
-          <button type="submit">Cancelar</button>
+          <button type="submit" onClick={() => props.history.push('/home')}>
+            Cancelar
+          </button>
         </div>
       </Form>
     </Formik>
   );
 };
 
-export default StudentForm;
+export default withRouter(StudentForm);

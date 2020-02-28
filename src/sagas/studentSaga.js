@@ -20,6 +20,7 @@ function* addStudent({ payload }) {
   try {
     const response = yield call(API.post, '/students', payload.student);
     yield put(addStudentSucess(response.data));
+    history.push('/home');
   } catch (e) {
     console.log(e);
   }
